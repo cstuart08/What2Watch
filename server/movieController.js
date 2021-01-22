@@ -4,7 +4,6 @@ let id = data[data.length -1].id + 1 // WILL THIS CODE WORK?
 module.exports = {
     getAllMovies: (req, res) => {
         const {title, rating, genres} = req.query
-        console.log(title, rating, genres)
         let movies = [...data]
 
         if (title  && title != "") {
@@ -20,7 +19,6 @@ module.exports = {
             let lowerCasedGenres = arrayOfGenres.map( e => {
                 return e.toLowerCase()
             })
-            console.log(lowerCasedGenres)
             let filteredMoviesByGenres = []
             for (let i = 0; i < genres.length; i++) {
                 for (let j = 0; j < movies.length; j++) {
