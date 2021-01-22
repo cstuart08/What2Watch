@@ -29,7 +29,16 @@ module.exports = {
             }
             movies = filteredMoviesByGenres
         }
-        res.status(200).send(movies)
+        console.log(movies)
+        let moviesSorted = movies.sort((a, b) => {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+        console.log(moviesSorted)
+        res.status(200).send(moviesSorted)
     },
     getMovieByID: (req, res) => {
         const {id} = req.params
