@@ -1,0 +1,32 @@
+.movie-gallery-card {
+    height: 24vw;
+    width: 16vw;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.considered-gallery-card {
+    height: 8vw;
+    width: 6vw;
+    object-fit: cover;
+    overflow: hidden;
+    margin-left: 30px;
+}
+
+.container {
+    position: relative;
+}
+
+.container .considered-card-button {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background-color: #07edf5;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.19);
+    color: #880303;
+    font-weight: bolder;
+    padding: 0px 4px;
+    text-align: center;
+    font-size: 14px;
+}

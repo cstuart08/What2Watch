@@ -1,0 +1,29 @@
+.considered-gallery-div {
+    height: 15vh;
+    margin-top: 20px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.vertical-line {
+    background-color: whitesmoke;
+    margin-left: 30px;
+    width: 2px;
+    height: 120%;
+}
+
+.considered-gallery-div h3{
+    font-weight: bold;
+    color: whitesmoke;
+    font-size: 24px;
+}
+
+.considered-movie-cards {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}

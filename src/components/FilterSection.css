@@ -1,0 +1,74 @@
+.filter-section-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 6vh;
+    margin-top: 30px;
+}
+
+.filter-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 2vh;
+    justify-content: center;
+    padding: 15px;
+}
+
+.filter-button {
+    background-color: #033088;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(160, 203, 206, 0.2), 0 4px 5px 0 rgba(131, 194, 209, 0.19);
+    color: #07edf5;
+    font-weight: bold;
+    padding: 4px 12px;
+    margin: 5px;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .filter-input-field {
+    background-color: #032f88;
+    color: #07edf5;
+    margin: 15px;
+    padding-left: 4px;
+    border: 1px solid rgba(245, 245, 245, 0.555);
+    height: 24px;
+  }
+
+  .filter-input-field::placeholder {
+      color: #07edf5;
+  }
+
+  h3 {
+      font-weight: bold;
+      font-size: 24px;
+      color: whitesmoke;
+  }
+
+  .filter-vertical-line {
+    background-color: whitesmoke;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 2px;
+    height: 10vh;
+}
+
+.add-movie-button {
+    margin-left: 100px;
+    background-color: #033088;
+    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    color: #07edf5;
+    font-weight: bold;
+    padding: 15px 24px;
+    margin-right: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.add-movie-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(31, 18, 211, 0.24), 0 17px 50px 0 rgba(17, 20, 199, 0.19);
+}

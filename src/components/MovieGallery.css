@@ -1,0 +1,47 @@
+.movie-gallery-div {
+    height: 52vh;
+    margin-top: 30px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-arrow-button {
+    background-color: transparent;
+    border: none;
+    color: #033088;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .left-arrow-button:focus {
+      outline: 0px;
+  }
+
+  .left-arrow-button:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+  }
+
+  .right-arrow-button {
+    background-color: transparent;
+    border: none;
+    color: #033088;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    transform: rotate(180deg);
+  }
+
+  .right-arrow-button:focus {
+    outline: 0px;
+  }
+
+  .right-arrow-button:active {
+    transform: translate(0px, 5px) rotate(90deg);
+    -webkit-transform: translate(0px, 5px) rotate(180deg);
+  }
