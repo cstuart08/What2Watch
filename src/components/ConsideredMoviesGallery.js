@@ -1,5 +1,5 @@
 import MovieCard from './MovieCard'
-import './ConsideredMovies.css';
+import './ConsideredMoviesGallery.css';
 
 export default function ConsideredMoviesGallery(props) {
     let mappedMovies = props.movies.map( e => {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './MovieForm.css';
+import GenericButton from './GenericButton';
 
 class MovieForm extends Component {
   constructor(props) {
@@ -60,8 +61,8 @@ class MovieForm extends Component {
       let movieFormDiv = this.props.isEditing ? (
         <div class="movie-form-main-div">
           <div className="movie-form-buttons-div">
-            <button onClick={() => this.props.editMovie(movie)}>UPDATE MOVIE</button>
-            <button onClick={() => this.props.toggleView("movieGallery")}>X</button>
+            <GenericButton handleClick={() => this.props.editMovie(movie)}>UPDATE MOVIE</GenericButton>
+            <GenericButton handleClick={() => this.props.toggleView("movieGallery")}>X</GenericButton>
           </div>
           <div className="movie-form-sub-div">
             <p>Movie Title:</p>
@@ -103,8 +104,8 @@ class MovieForm extends Component {
       ) : (
         <div className="movie-form-main-div">
           <div className="movie-form-buttons-div">
-            <button onClick={() => this.props.addMovie(this.state)}>SAVE MOVIE</button>
-            <button onClick={() => this.props.toggleView("movieGallery")}>X</button>
+            <GenericButton handleClick={() => this.props.addMovie(this.state)}>SAVE MOVIE</GenericButton>
+            <GenericButton handleClick={() => this.props.toggleView("movieGallery")}>X</GenericButton>
           </div>
           <div className="movie-form-sub-div">
             <p>Movie Title:</p>

@@ -1,6 +1,10 @@
 import './MovieDetails.css';
+import GenericButton from './GenericButton';
 
 export default function MovieGallery(props) {
+    if (props.toggleView) {
+        console.log("here got")
+    }
     let {movie} = props
     let hours = movie.length / 60
     let minutes = movie.length % 60
@@ -11,13 +15,13 @@ export default function MovieGallery(props) {
         return e.id
     })
 
-    let considerButton = ids.includes(movie.id) ? <button className="unconsider-movie-button" onClick={() => props.removeConsideredMovie(movie)}>Unconsider Movie</button> : <button className="consider-movie-button" onClick={() => props.considerMovie(movie)}>Consider Movie</button>
+    let considerButton = ids.includes(movie.id) ? <GenericButton handleClick={() => props.removeConsideredMovie(movie)}>Unconsider Movie</GenericButton> : <GenericButton handleClick={() => props.considerMovie(movie)}>Consider Movie</GenericButton>
 
     return (
         <div className="movie-details-div">
             <div className="left-div">
-                <button className="movie-details-button-left" onClick={() => props.toggleView("movieForm", movie)}>Edit Movie</button>
-                <button className="movie-details-button-left" onClick={() => props.deleteMovie(movie)}>Delete Movie</button>
+                <GenericButton className="movie-details-button-left" handleClick={() => props.toggleView("movieForm", movie)}>Edit Movie</GenericButton>
+                <GenericButton className="movie-details-button-left" handleClick={() => props.deleteMovie(movie)}>Delete Movie</GenericButton>
                 <p className="year-p">Year: {movie.year}</p>
                 <p>Genres: {genres.join(',  \xa0')}</p>
                 <p>Length: {Math.floor(hours)} Hr {minutes} Min</p>
@@ -32,7 +36,7 @@ export default function MovieGallery(props) {
             <div className="right-div">
                 <div className="right-buttons-div">
                     {considerButton}
-                    <button className="movie-details-button-right" onClick={() => props.toggleView("movieGallery")}>X</button>
+                    <GenericButton customStyle="x-button" handleClick={() => props.toggleView("movieGallery")}>X</GenericButton>
                 </div>
                 <img className="detail-movie-poster" src={movie.posterPath} alt={movie.title}/>
             </div>

@@ -187,6 +187,7 @@ class Movies extends Component {
   }
 
   toggleViews(view, movie) {
+      console.log("hitting this spot")
     if (view === "movieGallery") {
         this.setState({
             isEditing: false,
