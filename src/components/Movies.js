@@ -35,6 +35,7 @@ class Movies extends Component {
 
   componentDidMount() {
       this.getMovies()
+      this.getConsideredMovies()
   }
 
   getMovies() {
@@ -44,8 +45,18 @@ class Movies extends Component {
         })
         this.toggleViews("movieGallery")
     }).catch( error => {
-        console.log(`There was an error getting movies. Error: ${error}`)
+        console.log(`There was an error getting your movies. Error: ${error}`)
     })
+  }
+
+  getConsideredMovies() {
+      axios.get('/api/considered').then(res => {
+          this.setState({
+              consideredMovies: res.data
+          })
+      }).catch( error => {
+          console.log(`There was an error getting your considered movies. Error ${error}`)
+      })
   }
 
   getFilteredMovies(queries) {
@@ -139,19 +150,25 @@ class Movies extends Component {
   }
 
   addToConsideredMovies(movie) {
-      this.setState({
-          consideredMovies: [...this.state.consideredMovies, movie]
-      })
-      this.toggleViews("movieGallery")
+    axios.post('/api/considered', movie).then(res => {
+        console.log(res.data)
+        this.getConsideredMovies()
+        this.toggleViews("movieGallery")
+    }).catch( error => {
+      console.log(`There was an error posting a movie. Error: ${error}`)
+    })
   }
 
   removeFromConsideredMovies(movie) {
-      let index = this.state.consideredMovies.findIndex(e => e.id === movie.id)
-      let consideredMoviesToEdit = [...this.state.consideredMovies]
-      consideredMoviesToEdit.splice(index, 1)
-      this.setState({
-          consideredMovies: consideredMoviesToEdit
-      })
+    axios.delete(`/api/considered/${movie.id}`).then(res => {
+        if (res.status === 200) {
+            this.getConsideredMovies()
+        } else {
+            console.log(`There was a server error unconsidering a movie. Status: ${res.status}`)
+        }
+    }).catch( error => {
+        console.log(`There was an error unconsidering a movie. ${error}`)
+    })
       this.toggleViews("movieGallery")
   }
 
@@ -213,7 +230,6 @@ class Movies extends Component {
         mainSection = <MovieDetails removeConsideredMovie={this.removeFromConsideredMovies} consideredMovies={this.state.consideredMovies} deleteMovie={this.deleteMovie} considerMovie={this.addToConsideredMovies} toggleView={this.toggleViews} movie={this.state.movieToDisplay}/>
       } else {
           if (this.state.isEditing) {
-              console.log("isediting....")
             mainSection = <MovieForm editMovie={this.editMovie} addMovie={this.addMovie} toggleView={this.toggleViews} isEditing={true} movie={this.state.movieToDisplay}/>
           } else {
             mainSection = <MovieForm addMovie={this.addMovie} toggleView={this.toggleViews} isEditing={false}/>

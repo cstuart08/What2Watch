@@ -7,8 +7,11 @@ export default function MovieGallery(props) {
     let genres = movie.genres.map( e=> {
         return e.charAt(0).toUpperCase() + e.slice(1)
     })
+    let ids = props.consideredMovies.map(e => {
+        return e.id
+    })
 
-    let considerButton = props.consideredMovies.includes(movie) ? <button className="unconsider-movie-button" onClick={() => props.removeConsideredMovie(movie)}>Unconsider Movie</button> : <button className="consider-movie-button" onClick={() => props.considerMovie(movie)}>Consider Movie</button>
+    let considerButton = ids.includes(movie.id) ? <button className="unconsider-movie-button" onClick={() => props.removeConsideredMovie(movie)}>Unconsider Movie</button> : <button className="consider-movie-button" onClick={() => props.considerMovie(movie)}>Consider Movie</button>
 
     return (
         <div className="movie-details-div">
