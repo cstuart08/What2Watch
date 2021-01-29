@@ -96,12 +96,20 @@ class Movies extends Component {
     axios.delete(`/api/movies/${movie.id}`).then(res => {
         if (res.status === 200) {
             let indexOfConsideredMovie = this.state.consideredMovies.findIndex(e => e.id === movie.id)
-            let updatedMovies = [...this.state.consideredMovies]
-            updatedMovies.splice(indexOfConsideredMovie, 1)
-            this.setState({
-                movies: res.data,
-                consideredMovies: updatedMovies
-            })
+            if (indexOfConsideredMovie >= 0) {
+                this.removeFromConsideredMovies(movie)
+            }
+
+            if (this.state.currentIndex > 0) {
+                this.setState({
+                    movies: res.data,
+                    currentIndex: this.state.currentIndex - 1
+                })
+            } else {
+                this.setState({
+                    movies: res.data
+                })
+            }
             this.toggleViews("movieGallery")
         }
     }).catch( error => {
@@ -224,6 +232,7 @@ class Movies extends Component {
   }
 
   render() {
+    console.log(this.state.currentIndex)
       let mainSection = null 
       if (this.state.movieGalleryView) {
         mainSection = <MovieGallery updateIndex={this.updateIndex} toggleView={this.toggleViews} movies={this.state.movies.slice(this.state.currentIndex, this.state.currentIndex + 5)}/>

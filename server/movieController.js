@@ -64,7 +64,14 @@ module.exports = {
         }
         data.push(movie)
         id++
-        res.status(200).send(data)
+        let moviesSorted = data.sort((a, b) => {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1
+            } else {
+                return 1
+            }
+        })
+        res.status(200).send(moviesSorted)
     },
     updateMovie: (req, res) => {
         const {title, year, genres, length, posterPath, summary, stars, ageRating, formats} = req.body
@@ -87,7 +94,14 @@ module.exports = {
                 ageRating,
                 formats
             }
-            res.status(200).send(data) // Decide what to do here. Send back single movie? Or entire array of data?
+            let moviesSorted = data.sort((a, b) => {
+                if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                    return -1
+                } else {
+                    return 1
+                }
+            })
+            res.status(200).send(moviesSorted) // Decide what to do here. Send back single movie? Or entire array of data?
         }
     },
     deleteMovie: (req, res) => {
@@ -97,7 +111,14 @@ module.exports = {
             res.status(404).send("Unable to delete a movie: movie not found.")
         } else {
             data.splice(foundIndex, 1)
-            res.status(200).send(data)
+            let moviesSorted = data.sort((a, b) => {
+                if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                    return -1
+                } else {
+                    return 1
+                }
+            })
+            res.status(200).send(moviesSorted)
         }
     }
 }
