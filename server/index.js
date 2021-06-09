@@ -19,5 +19,5 @@ app.post('/api/considered', consideredController.considerMovie)
 app.delete('/api/considered/:id', consideredController.unconsiderMovie)
 
 
-const port = 5555
+const port = process.env.PORT || 5555
 app.listen(port, console.log(`Listening on port: ${port}`))
